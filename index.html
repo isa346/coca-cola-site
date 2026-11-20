@@ -28,7 +28,7 @@
     @media(max-width:900px){.hero,.hero-inner{min-height:560px}.hero-media{left:16%}.origin{gap:30px}.origin-photo img{height:390px}.timeline{grid-template-columns:repeat(3,1fr);row-gap:37px}.timeline:before{display:none}.event{border-left:1px solid #d8bbb4;padding-left:15px}.event:before{margin-left:-22px}.facts-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:900px){.links-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:650px){html{scroll-padding-top:0}.wrap{width:min(100% - 34px,1160px)}.topline{font-size:9px;letter-spacing:.12em}.nav{height:auto;min-height:64px;flex-wrap:wrap;padding:11px 0}.logo{font-size:24px}.menu{display:block}.navlinks{display:none;order:3;width:100%;align-items:flex-start;flex-direction:column;gap:15px;padding:8px 0 13px}.navlinks.open{display:flex}.navlinks a{font-size:14px}.nav-cta{border:0;padding:0}.hero,.hero-inner{min-height:620px}.hero-media{inset:0}.hero-media img{object-position:56% center;opacity:.43}.hero:after{background:linear-gradient(90deg,#9f0923ed,#a40925b8 60%,#78071d80)}.hero-inner{padding:55px 0 105px}.hero h1{font-size:clamp(57px,16vw,86px)}.hero-copy>p{font-size:15px;max-width:420px}.hero-year{font-size:100px;bottom:20px}.ticker-inner{justify-content:flex-start;overflow:hidden}.ticker span{font-size:9px}.section{padding:68px 0}.section-head{margin-bottom:27px}.section h2{font-size:clamp(39px,11vw,55px)}.intro{font-size:14px}.origin{grid-template-columns:1fr;gap:26px}.origin-copy .lead{font-size:21px}.origin-photo img{height:330px}.origin-photo figcaption{left:10px;bottom:12px}.stat-row{margin-top:30px}.stat{padding:18px 10px 18px 0}.stat+.stat{padding-left:12px}.stat strong{font-size:30px}.stat span{font-size:10px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:210px 170px 190px;gap:9px}.photo:first-child{grid-column:1 / span 2;grid-row:1}.photo:nth-child(2){grid-column:1;grid-row:2}.photo:nth-child(3){grid-column:2;grid-row:2 / span 2}.photo:nth-child(4){grid-column:1;grid-row:3}.photo figcaption{left:11px;right:11px;bottom:11px;font-size:10px}.photo-label{font-size:8px}.timeline{grid-template-columns:1fr 1fr;row-gap:28px;margin-top:36px}.event time{font-size:27px}.event h3{font-size:13px}.event p{font-size:11px}.bottle-story{grid-template-columns:1fr;gap:27px}.bottle-image img{height:285px}.bottle-image:before{left:-7px}.bottle-copy h2{font-size:43px}.bottle-facts{gap:8px}.bottle-fact{padding:12px;font-size:11px}.facts-grid{gap:8px}.fact-tile{min-height:180px;padding:16px}.fact-tile strong{font-size:17px}.fact-tile p{font-size:11px}.links-grid{grid-template-columns:1fr}.foot{align-items:flex-start}.backtop{display:none}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    .quiz-section{background:#f0e8de}.quiz{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.question{margin:0;min-width:0;padding:21px;background:var(--paper);border:1px solid var(--line);border-radius:14px}.question legend{font-weight:900;font-size:15px;line-height:1.4;padding:0 0 13px}.answer{display:flex;align-items:center;gap:9px;padding:8px 0;color:#5d5051;font-size:13px;cursor:pointer}.answer input{accent-color:var(--red);width:16px;height:16px}.quiz-footer{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:19px}.quiz-submit{border:0;border-radius:28px;background:var(--red);color:white;padding:13px 18px;font-weight:900;cursor:pointer}.quiz-result{font-weight:bold;color:var(--red);font-size:14px;margin:0;min-height:18px}@media(max-width:650px){.quiz{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -39,7 +39,7 @@
       <a class="logo" href="#home" aria-label="На главную">Coca-Cola</a>
       <button class="menu" id="menu" aria-label="Открыть меню" aria-expanded="false">☰</button>
       <nav class="navlinks" id="nav" aria-label="Главная навигация">
-        <a href="#story">История</a><a href="#photos">Галерея</a><a href="#timeline">Хронология</a><a href="#bottle">Бутылка</a><a href="#facts">Факты</a><a class="nav-cta" href="#links">Ссылки ↗</a>
+        <a href="#story">История</a><a href="#photos">Галерея</a><a href="#timeline">Хронология</a><a href="#bottle">Бутылка</a><a href="#facts">Факты</a><a href="#quiz">Викторина</a><a class="nav-cta" href="#links">Ссылки ↗</a>
       </nav>
     </div>
   </header>
@@ -127,7 +127,16 @@
       </div>
     </section>
 
-    <section class="section links-section" id="links">
+    <section class="section quiz-section" id="quiz">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">Проверь себя</div><h2>Мини-викторина</h2><p class="intro">Три вопроса об истории Coca-Cola. Выбери ответы и узнай свой результат.</p></div>
+        <form id="quizForm"><div class="quiz">
+          <fieldset class="question"><legend>В каком году впервые подали Coca-Cola?</legend><label class="answer"><input type="radio" name="q1" value="a" required> 1886</label><label class="answer"><input type="radio" name="q1" value="b"> 1915</label><label class="answer"><input type="radio" name="q1" value="c"> 1923</label></fieldset>
+          <fieldset class="question"><legend>Кто придумал название напитка?</legend><label class="answer"><input type="radio" name="q2" value="a" required> Джон Пембертон</label><label class="answer"><input type="radio" name="q2" value="b"> Фрэнк Робинсон</label><label class="answer"><input type="radio" name="q2" value="c"> Эрл Дин</label></fieldset>
+          <fieldset class="question"><legend>В каком году запатентовали контурную бутылку?</legend><label class="answer"><input type="radio" name="q3" value="a" required> 1902</label><label class="answer"><input type="radio" name="q3" value="b"> 1915</label><label class="answer"><input type="radio" name="q3" value="c"> 1930</label></fieldset>
+        </div><div class="quiz-footer"><button class="quiz-submit" type="submit">Проверить ответы ↗</button><p class="quiz-result" id="quizResult" aria-live="polite"></p></div></form>
+      </div>
+    </section>    <section class="section links-section" id="links">
       <div class="wrap">
         <div class="section-head reveal"><div class="kicker">Читать дальше</div><h2>Полезные ссылки</h2><p class="intro">Все ссылки ведут на материалы The Coca-Cola Company.</p></div>
         <div class="links-grid">
@@ -161,7 +170,13 @@
       const fact = extraFacts[Math.floor(Math.random() * extraFacts.length)];
       document.getElementById('randomFact').textContent = fact;
     });
-    const updateProgress = () => {
+    document.getElementById('quizForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const answers = {q1:'a', q2:'b', q3:'b'};
+      const selected = new FormData(event.currentTarget);
+      const score = Object.entries(answers).filter(([key, value]) => selected.get(key) === value).length;
+      document.getElementById('quizResult').textContent = score === 3 ? 'Отлично! Все ответы верные 🎉' : `Верных ответов: ${score} из 3. Попробуй ещё раз!`;
+    });    const updateProgress = () => {
       const page = document.documentElement;
       const max = page.scrollHeight - page.clientHeight;
       progressBar.style.width = `${max > 0 ? page.scrollTop / max * 100 : 0}%`;
